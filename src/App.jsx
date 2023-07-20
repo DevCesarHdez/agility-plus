@@ -1,10 +1,10 @@
-import "./styles/App.scss"
+import Cards from "./pages/Cards"
 
 const App = () => {
 	return (
-		<main>
+		<main className="container">
 			Rick and Morty
-			<button className="btn btn-primary" >Hola</button>
+			<Cards />
 		</main>
 	)
 }
