@@ -1,11 +1,11 @@
 import {useState} from "react"
 import {colorByStatus} from "../helpers/status"
-const useCard = ({status}) => {
-	// const [bgStats, setBgStatus] = useState('bg-secondary')
-	const handleStatus = () => {}
-	let bgStatus = "bg-" + colorByStatus(status);
+const useCard = ({initialStatus}) => {
+	const [status, setStatus] = useState(initialStatus)
+	const handleStatus = (e) => setStatus(e.target.value)
+	const bgStatus = "bg-" + colorByStatus(status);
 
-	return {bgStatus}
+	return {bgStatus, status, handleStatus}
 }
 
 export default useCard
