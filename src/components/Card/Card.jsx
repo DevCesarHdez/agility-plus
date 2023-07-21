@@ -21,7 +21,7 @@ const Card = ({ name, initialStatus, species, imgAvatar }) => {
             <select className="form-select" name="status" id="status" onChange={handleStatus} value={status}>
               <option value="Alive">Alive</option>
               <option value="Dead">Dead</option>
-              <option value="Unknown">Unknown</option>
+              <option value="unknown">Unknown</option>
             </select>
           </div>
 				</div>

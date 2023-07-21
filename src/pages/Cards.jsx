@@ -1,11 +1,24 @@
-import Layout from "../components/Layout"
-import Card from "../components/Card/Card"
+import {useEffect, useState} from "react";
+import Layout from "../components/Layout";
+import Card from "../components/Card/Card";
+import character from "../infrastructure/repository/Character";
+
 
 const Cards = () => {
+	const [characters, setCharacters] = useState([])
+	const fetchCharacter = async () => {
+		const results = await character()
+		setCharacters(results.results)
+	}
+
+	useEffect(() => {
+		fetchCharacter()
+	}, [])
+	
 	return <Layout>
-		<Card name="Cesar" initialStatus="Alive" species="Humman" imgAvatar="https://rickandmortyapi.com/api/character/avatar/1.jpeg" />
-		<Card name="Cesar" initialStatus="Dead" species="Humman" imgAvatar="https://rickandmortyapi.com/api/character/avatar/1.jpeg" />
-		<Card name="Cesar" initialStatus="unknown" species="Humman" imgAvatar="https://rickandmortyapi.com/api/character/avatar/1.jpeg" />
+		{
+		characters.map(character => <Card key={character.id} name={character.name} initialStatus={character.status} species={character.species} imgAvatar={character.image} />)
+		}
 	</Layout>
 }
 
